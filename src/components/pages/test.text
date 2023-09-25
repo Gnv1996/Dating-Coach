@@ -1,0 +1,462 @@
+import React, { useState } from "react";
+
+import { Magic } from "magic-sdk";
+import { useNavigate } from "react-router-dom";
+const LoginPage = () => {
+  const [inputValue, setinputValue] = useState("");
+
+  const navigate = useNavigate();
+
+  const magic = new Magic(process.env.REACT_APP_MAGIC_LINK_SECRET_KEY);
+
+  const userData = window.localStorage.getItem("userdata");
+  const userEmail = JSON.parse(userData);
+
+  console.log(userEmail, "email;");
+  const handleLogin = async () => {
+    try {
+      const res = await magic.auth.loginWithMagicLink({ email: inputValue });
+      if (res) {
+        localStorage.setItem("userdata", `{"email":"${inputValue}"}`);
+        localStorage.setItem("userId", res);
+        navigate("/");
+      }
+    } catch {
+      console.log(Error.mssage, "not found");
+    }
+
+    try {
+      await magic.auth.loginWithMagicLink({
+        email: inputValue,
+        showUI: false,
+      });
+    } catch {
+      console.log(Error.mssage, "not found");
+    }
+  };
+  return (
+    <div className="main_login ">
+      <div className="container">
+        <div className="sub_login flex flex-col items-center justify-center h-screen">
+          <p className="mb-8 text-4xl font-bold text-center text-white ">
+            Welcome to AI42 <br /> free Image Generator
+          </p>
+          <div className="mx-auto flex w-full flex-col justify-center space-y-6 ">
+            <div className="flex flex-col space-y-2 text-center">
+              <p className="text-sm text-slate-500 ">
+                Just enter your email and start generating images for free
+              </p>
+              <div className="login_form grid gap-6">
+                <form>
+                  <div className="grid gap-2">
+                    <div className="grid gap-1">
+                      <label className="login_label" for="email">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        className="login_input file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-input ring-offset-background  "
+                        id="email"
+                        placeholder="name@example.com"
+                        autocapitalize="none"
+                        autocomplete="email"
+                        autocorrect="off"
+                        name="email"
+                        value={inputValue}
+                        onChange={(e) => setinputValue(e.target.value)}
+                      />
+                      <p className="text-red-700"></p>
+                    </div>
+                    <button
+                      type="button"
+                      className="let-me-in_btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-blue-700"
+                      onClick={handleLogin}
+                    >
+                      Let me in
+                    </button>
+                    <button>Google With login</button>
+                    <div className="mt-4 text-xs text-center text-slate-500">
+                      By continuing you agree to our{" "}
+                      <a className="underline" target="_blank" href="/terms">
+                        Terms
+                      </a>{" "}
+                      and{" "}
+                      <a class="underline" target="_blank" href="/privacy">
+                        Privacy Policy
+                      </a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default LoginPage;
+
+
+
+
+
+
+import React, { useState } from "react";
+
+import { Magic } from "magic-sdk";
+import { useNavigate } from "react-router-dom";
+const LoginPage = () => {
+  const [inputValue, setinputValue] = useState("");
+
+  const navigate = useNavigate();
+
+  const magic = new Magic(process.env.REACT_APP_MAGIC_LINK_SECRET_KEY);
+
+  const userData = window.localStorage.getItem("userdata");
+  const userEmail = JSON.parse(userData);
+
+  console.log(userEmail, "email;");
+  const handleLogin = async () => {
+    try {
+      const res = await magic.auth.loginWithMagicLink({ email: inputValue });
+      if (res) {
+        localStorage.setItem("userdata", `{"email":"${inputValue}"}`);
+        localStorage.setItem("userId", res);
+        navigate("/");
+      }
+    } catch {
+      console.log(Error.mssage, "not found");
+    }
+
+    try {
+      await magic.auth.loginWithMagicLink({
+        email: inputValue,
+        showUI: false,
+      });
+    } catch {
+      console.log(Error.mssage, "not found");
+    }
+  };
+  return (
+    <div className="main_login ">
+      <div className="container">
+        <div className="sub_login flex flex-col items-center justify-center h-screen">
+          <p className="mb-8 text-4xl font-bold text-center text-white ">
+            Welcome to AI42 <br /> free Image Generator
+          </p>
+          <div className="mx-auto flex w-full flex-col justify-center space-y-6 ">
+            <div className="flex flex-col space-y-2 text-center">
+              <p className="text-sm text-slate-500 ">
+                Just enter your email and start generating images for free
+              </p>
+              <div className="login_form grid gap-6">
+                <form>
+                  <div className="grid gap-2">
+                    <div className="grid gap-1">
+                      <label className="login_label" for="email">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        className="login_input file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-input ring-offset-background  "
+                        id="email"
+                        placeholder="name@example.com"
+                        autocapitalize="none"
+                        autocomplete="email"
+                        autocorrect="off"
+                        name="email"
+                        value={inputValue}
+                        onChange={(e) => setinputValue(e.target.value)}
+                      />
+                      <p className="text-red-700"></p>
+                    </div>
+                    <button
+                      type="button"
+                      className="let-me-in_btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-blue-700"
+                      onClick={handleLogin}
+                    >
+                      Let me in
+                    </button>
+                    <button>Google With login</button>
+                    <div className="mt-4 text-xs text-center text-slate-500">
+                      By continuing you agree to our{" "}
+                      <a className="underline" target="_blank" href="/terms">
+                        Terms
+                      </a>{" "}
+                      and{" "}
+                      <a class="underline" target="_blank" href="/privacy">
+                        Privacy Policy
+                      </a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default LoginPage;
+
+
+< logon ----------------------------------------->
+import React, { useState } from "react";
+
+import { Magic } from "magic-sdk";
+import { useNavigate } from "react-router-dom";
+const LoginPage = () => {
+  const [inputValue, setinputValue] = useState("");
+
+  const navigate = useNavigate();
+
+  const magic = new Magic(process.env.REACT_APP_MAGIC_LINK_SECRET_KEY);
+
+
+  const handleLogin = async () => {
+    try {
+      const res = await magic.auth.loginWithMagicLink({ email: inputValue });
+      if (res) {
+        localStorage.setItem("userdata", `{"email":"${inputValue}"}`);
+        localStorage.setItem("userId", res);
+        navigate("/");
+      }
+    } catch {
+      console.log(Error.mssage, "not found");
+    }
+
+    try {
+      await magic.auth.loginWithMagicLink({
+        email: inputValue,
+        showUI: false,
+      });
+    } catch {
+      console.log(Error.mssage, "not found");
+    }
+  };
+  return (
+    <div className="main_login ">
+      <div className="container">
+        <div className="sub_login flex flex-col items-center justify-center h-screen">
+          <p className="mb-8 text-4xl font-bold text-center text-white ">
+            Welcome to AI42 <br /> free Image Generator
+          </p>
+          <div className="mx-auto flex w-full flex-col justify-center space-y-6 ">
+            <div className="flex flex-col space-y-2 text-center">
+              <p className="text-sm text-slate-500 ">
+                Just enter your email and start generating images for free
+              </p>
+              <div className="login_form grid gap-6">
+                <form>
+                  <div className="grid gap-2">
+                    <div className="grid gap-1">
+                      <label className="login_label" for="email">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        className="login_input file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-input ring-offset-background  "
+                        id="email"
+                        placeholder="name@example.com"
+                        autocapitalize="none"
+                        autocomplete="email"
+                        autocorrect="off"
+                        name="email"
+                        value={inputValue}
+                        onChange={(e) => setinputValue(e.target.value)}
+                      />
+                      <p className="text-red-700"></p>
+                    </div>
+                    <button
+                      type="button"
+                      className="let-me-in_btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-blue-700"
+                      onClick={handleLogin}
+                    >
+                      Let me in
+                    </button>
+                    <button>Google With login</button>
+                    <div className="mt-4 text-xs text-center text-slate-500">
+                      By continuing you agree to our{" "}
+                      <a className="underline" target="_blank" href="/terms">
+                        Terms
+                      </a>{" "}
+                      and{" "}
+                      <a class="underline" target="_blank" href="/privacy">
+                        Privacy Policy
+                      </a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default LoginPage;
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState } from "react";
+
+import { Magic } from "magic-sdk";
+import { useNavigate } from "react-router-dom";
+const Login = () => {
+  const [inputValue, setinputValue] = useState("");
+
+  const navigate = useNavigate();
+
+  const magic = new Magic(process.env.REACT_APP_MAGIC_LINK_SECRET_KEY);
+
+
+  const handleLogin = async () => {
+    try {
+      const res = await magic.auth.loginWithMagicLink({ email: inputValue });
+      if (res) {
+        localStorage.setItem("userdata", `{"email":"${inputValue}"}`);
+        localStorage.setItem("userId", res);
+        navigate("/");
+      }
+    } catch {
+      console.log(Error.mssage, "not found");
+    }
+
+    try {
+      await magic.auth.loginWithMagicLink({
+        email: inputValue,
+        showUI: false,
+      });
+    } catch {
+      console.log(Error.mssage, "not found");
+    }
+  };
+  return (
+    <div className="main_login ">
+      <div className="container">
+        <div className="sub_login flex flex-col items-center justify-center h-screen">
+          <p className="mb-8 text-4xl font-bold text-center text-white ">
+            Welcome to AI42 <br /> free Image Generator
+          </p>
+          <div className="mx-auto flex w-full flex-col justify-center space-y-6 ">
+            <div className="flex flex-col space-y-2 text-center">
+              <p className="text-sm text-slate-500 ">
+                Just enter your email and start generating images for free
+              </p>
+              <div className="login_form grid gap-6">
+                <form>
+                  <div className="grid gap-2">
+                    <div className="grid gap-1">
+                      <label className="login_label" for="email">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        className="login_input file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-input ring-offset-background  "
+                        id="email"
+                        placeholder="name@example.com"
+                        autocapitalize="none"
+                        autocomplete="email"
+                        autocorrect="off"
+                        name="email"
+                        value={inputValue}
+                        onChange={(e) => setinputValue(e.target.value)}
+                      />
+                      <p className="text-red-700"></p>
+                    </div>
+                    <button
+                      type="button"
+                      className="let-me-in_btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-blue-700"
+                      onClick={handleLogin}
+                    >
+                      Let me in
+                    </button>
+                    <button>Google With login</button>
+                    <div className="mt-4 text-xs text-center text-slate-500">
+                      By continuing you agree to our{" "}
+                      <a className="underline" target="_blank" href="/terms">
+                        Terms
+                      </a>{" "}
+                      and{" "}
+                      <a class="underline" target="_blank" href="/privacy">
+                        Privacy Policy
+                      </a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default Login;
+
+
+
+
+
+
+
+
+
+import React, { useState } from "react";
+
+import { Magic } from "magic-sdk";
+import { useNavigate } from "react-router-dom";
+const Login = () => {
+  const [inputValue, setinputValue] = useState("");
+
+  const navigate = useNavigate();
+
+  const magic = new Magic("pk_live_E93E928F732BC6D6");
+
+ 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const email = new FormData(e.target).get("email");
+    console.log(email,"ppp")
+    if (email) {
+      /* One-liner login with email OTP 🤯 */
+      await magic.auth.loginWithEmailOTP({ email });
+
+      const isLoggedIn = await magic.user.isLoggedIn();
+      const isLoggedIn2 = await magic.user.getIdToken();
+      console.log(isLoggedIn2,"pp")
+
+      if (isLoggedIn) {
+        /* Get user metadata including email */
+        const userMetadata = await magic.user.getMetadata();
+        alert(userMetadata, "logged");
+      }
+    }
+  };
+  return (
+    <>
+      <h1>Please sign up or login</h1>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          name="email"
+          required="required"
+          placeholder="Enter your email"
+        />
+        <button type="submit">Send</button>
+      </form>
+    </>
+  );
+};
+export default Login;
