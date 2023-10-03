@@ -13,6 +13,7 @@ const Login = () => {
     const userEmail = JSON.parse(userData);
 
     const email = new FormData(e.target).get("email");
+    console.log(email,"useremail")
 
     try {
       if (!userEmail) {
@@ -21,7 +22,7 @@ const Login = () => {
           await magic.auth.loginWithEmailOTP({ email });
 
           const Token = await magic.user.getIdToken();
-          localStorage.setItem("userdata", `{"email":"${email}"}`);
+          localStorage.setItem("userData", `{"email":"${email}"}`);
           localStorage.setItem("userToken", `{"Token":"${Token}"}`);
 
           navigate("/subscribe");

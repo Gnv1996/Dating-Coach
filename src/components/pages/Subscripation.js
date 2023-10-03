@@ -11,7 +11,7 @@ const Subscripation = () => {
   let payID2 = process.env.REACT_APP_PUBLIC_STRIPE_PRICE_ID_YEAR;
   /********************************** */
 
-  const userData = localStorage.getItem("userdata");
+  const userData = localStorage.getItem("userData");
   const userEmail = JSON.parse(userData);
  
 
@@ -19,10 +19,10 @@ const Subscripation = () => {
 
   const checkSubscripation = (value) => {
     if (value === "Free Trial") {
-      Navigate("/");
-    } else if (value === "Monthly" && !localStorage.getItem("userdata")) {
+      Navigate(`/?plan=${"freetrial"}`);
+    } else if (value === "Monthly" && !localStorage.getItem("userData")) {
       Navigate("/login");
-    } else if (value === "Yearly" && !localStorage.getItem("userdata")) {
+    } else if (value === "Yearly" && !localStorage.getItem("userData")) {
       Navigate("/login");
     } else {
       if (value === "Monthly") {

@@ -7,7 +7,7 @@ const options = ['1 month - 5$', '1 year - 50$']
 
 const Payment = () => {
   // u
-  const userData = JSON.parse(window.localStorage.getItem('userdata'));
+  const userData = JSON.parse(window.localStorage.getItem('userData'));
   const email = userData && userData.hasOwnProperty('email') ? userData.email : null
   if(!EmailValidator.validate(email)){
     console.log("please login")

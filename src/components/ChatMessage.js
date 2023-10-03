@@ -21,32 +21,40 @@ const ChatMessage = (props) => {
       key={id}
       className={`${ai && 'flex-row-reverse bg-light-white'} message pr-[10px]`}>
       {selected === 'DALL·E' && ai ? (
-        <Image url={text} />
+        <Image url={{text}} />
       ) : (
         <div className='message__wrapper'>
+          {text==="payment"?<>Payment is reuired  <a href='http://localhost:3000/pay' className='bg-[#2563eb] text-[white] font-semibold p-[3px] rounded-[7px] '>PayNow </a> or <a href="http://localhost:3000/?plan=freetrial" className='bg-[#2563eb] text-[white] font-semibold p-[3px] rounded-[7px] '>Free tiral </a> </>:
+          
+          
           <ReactMarkdown
-            className={`message__markdown ${ai ? 'text-left' : 'text-right'}`}
-            children={text}
-            remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
-            components={{
-              code({ node, inline, className, children, ...props }) {
-                const match = /language-(\w+)/.exec(className || 'language-js');
-                return !inline && match ? (
-                  <SyntaxHighlighter
-                    children={String(children).replace(/\n$/, '')}
-                    style={atomDark}
-                    language={match[1]}
-                    PreTag='div'
-                    {...props}
-                  />
-                ) : (
-                  <code className={className} {...props}>
-                    {children}{' '}
-                  </code>
-                );
-              },
-            }}
-          />
+          className={`message__markdown ${ai ? 'text-left' : 'text-right'}`}
+          
+          children={text}
+         
+          remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
+          components={{
+            code({ node, inline, className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || 'language-js');
+              return !inline && match ? (
+                <SyntaxHighlighter
+                  children={String(children).replace(/\n$/, '')}
+                  style={atomDark}
+                  language={match[1]}
+                  PreTag='div'
+                  {...props}
+                />
+              ) : (
+                <code className={className} {...props}>
+                  {children}{' '}
+                </code>
+              );
+            },
+          }}
+        />
+          
+          }
+         
 
           <div
             className={`${ai ? 'text-left' : 'text-right'} message__createdAt`}>

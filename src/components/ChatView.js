@@ -15,7 +15,7 @@ const ChatView = () => {
   const messagesEndRef = useRef();
   const inputRef = useRef();
   const success = window.location.href.split( "user=");
-  console.log(success,"oo")
+  const freePlan = window.location.href.split( "plan=");
 
   // const success=window.location.hr ef.split("https://dating-coach.ai42.app/")
 
@@ -66,7 +66,8 @@ const ChatView = () => {
       cleanPrompt,
       updateMessage,
       setThinking,
-      success
+      success,
+      freePlan
     );
   };
 
