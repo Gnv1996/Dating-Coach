@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { welcome_message } from '../config'
+import { useState } from "react";
+import { welcome_message, FontColor } from "../config";
 
 /**
  * A custom hook for managing the conversation between the user and the AI.
@@ -11,22 +11,23 @@ const useMessageCollection = () => {
     id: 1,
     createdAt: Date.now(),
     text: welcome_message,
-    ai: true
-  }
+    ai: true,
+    color:FontColor,
+  };
   const [messages, setMessages] = useState([initialMsg]);
 
   /**
-  * A function for adding a new message to the collection.
-  *
-  * @param {Object} message - The message to add to the collection.
-  */
+   * A function for adding a new message to the collection.
+   *
+   * @param {Object} message - The message to add to the collection.
+   */
   const addMessage = (message) => {
     setMessages((prev) => [...prev, message]);
-  }
+  };
 
-  const clearMessages = () => setMessages([initialMsg])
+  const clearMessages = () => setMessages([initialMsg]);
 
   return [messages, addMessage, clearMessages];
-}
+};
 
-export default useMessageCollection
+export default useMessageCollection;

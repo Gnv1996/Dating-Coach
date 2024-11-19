@@ -1,5 +1,6 @@
-import { createContext } from 'react';
-import useMessageCollection from '../hooks/useMessageCollection';
+import { createContext } from "react";
+import useMessageCollection from "../hooks/useMessageCollection";
+import { FontColor } from "../config";
 
 /**
  * ChatContext is a context object that is used to share collection of messages
@@ -16,6 +17,8 @@ const ChatContext = createContext({});
  */
 const ChatContextProvider = (props) => {
   const [messages, setMessages, clearMessages] = useMessageCollection([]);
+
+  console.log(messages, "MMMMMMMM");
 
   return (
     <ChatContext.Provider value={[messages, setMessages, clearMessages]}>

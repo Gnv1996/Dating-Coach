@@ -11,10 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <ChatContextProvider>
-    
-      <App />
-      
-      
+      <App /> 
       </ChatContextProvider>
      
     </BrowserRouter>

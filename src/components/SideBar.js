@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from "react";
-import { Link ,useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DarkMode from "./DarkMode";
 import { MdClose, MdMenu } from "react-icons/md";
 import { BiChevronRight } from "react-icons/bi";
@@ -9,8 +8,8 @@ import Modal from "./Modal";
 
 const menyLinkStyle = {
   color: "rgb(255 255 255)",
- borderBottom:"1px solid",
- paddingTop:" 4px",
+  borderBottom: "1px solid",
+  paddingTop: " 4px",
 };
 
 /**
@@ -24,7 +23,7 @@ const SideBar = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   /* navigate **/
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   /** */
 
   function handleResize() {
@@ -41,24 +40,22 @@ const SideBar = () => {
 
   const newLocal = <DarkMode open={open} />;
 
-  const userData = window.localStorage.getItem("userdata");
+  const userData = window.localStorage.getItem("userData");
   const userVerifedData = window.localStorage.getItem("user");
   const userEmail = JSON.parse(userData);
   const userStatus = JSON.parse(userVerifedData);
- console.log(userStatus)
+  console.log(userStatus);
 
-console.log(userEmail,"hhh")
-const LoginBtn=()=>{
- if(!userEmail){
-  navigate('/login')
- }else{
-  localStorage.removeItem("userdata")
-  localStorage.removeItem("userToken")
-  navigate('/login')
- }
-}
-  
-
+  console.log(userEmail, "hhh");
+  const LoginBtn = () => {
+    if (!userEmail) {
+      navigate("/login");
+    } else {
+      localStorage.removeItem("userData");
+      localStorage.removeItem("userToken");
+      navigate("/login");
+    }
+  };
 
   return (
     <>
@@ -93,8 +90,18 @@ const LoginBtn=()=>{
             </span>
           </div>
           <div className="pr-[30px] flex gap-[2rem]">
-            <button className=" subscribe_btn hover:bg-[#417cfb] transition-[0.25s] " onClick={()=>navigate('/subscribe')}>Subscribe</button>
-            <button className="login_btn hover:bg-[#417cfb] transition-[0.25s] " onClick={LoginBtn}>{!userEmail?"Login":"Logout"}</button>
+            <button
+              className=" subscribe_btn hover:bg-[#417cfb] transition-[0.25s] "
+              onClick={() => navigate("/subscribe")}
+            >
+              Subscribe
+            </button>
+            <button
+              className="login_btn hover:bg-[#417cfb] transition-[0.25s] "
+              onClick={LoginBtn}
+            >
+              {!userEmail ? "Login" : "Logout"}
+            </button>
           </div>
         </div>
 
@@ -106,24 +113,36 @@ const LoginBtn=()=>{
             <li>
               <Link to={!userStatus && "/"}>
                 <h1
-                  className={`pl-2  ${
-                    !open && "hidden"
-                  }  text-black `}
+                  className={`pl-2  ${!open && "hidden"}  text-black `}
                   style={menyLinkStyle}
                 >
-                  Main page  <span >{<BiChevronRight className="w-[25px]" style={{display:"inherit"}}/>}</span>
+                  Main page{" "}
+                  <span>
+                    {
+                      <BiChevronRight
+                        className="w-[25px]"
+                        style={{ display: "inherit" }}
+                      />
+                    }
+                  </span>
                 </h1>
               </Link>
             </li>
             <li>
               <Link to="/pay">
                 <h1
-                  className={`pl-2  ${
-                    !open && "hidden "
-                  }  text-black`}
+                  className={`pl-2  ${!open && "hidden "}  text-black`}
                   style={menyLinkStyle}
                 >
-                  Payment <span  >{<BiChevronRight className="w-[45px]" style={{display:"inherit"}}/>}</span>
+                  Payment{" "}
+                  <span>
+                    {
+                      <BiChevronRight
+                        className="w-[45px]"
+                        style={{ display: "inherit" }}
+                      />
+                    }
+                  </span>
                 </h1>
               </Link>
             </li>

@@ -18,7 +18,7 @@ const DarkMode = (props) => {
     <div className="darkNav">
       <span className="nav__item  relative  z-[1] w-[52px]" onClick={handleMode}>
         {darkTheme ? (
-          <>
+          <>                                                                                                                                                                                                                                          
             <div className="nav__icons">
               <MdOutlineWbSunny />
             </div>

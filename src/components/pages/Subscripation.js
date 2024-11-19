@@ -38,10 +38,10 @@ const Subscripation = () => {
       <div className="container max-w-[1280px] m-auto">
         <div className="sub_subscribe_page">
           <div className="sm:w-[100%]  sub_subscribe_page-about w-[55%] px-2 mx-auto mb-8 text-center">
-            <h2 className="border-top mb-4 text-[31px] font-extrabold tracking-tight text-gray-900  dark:text-white">
+            <h2 className="border-top mb-4 text-[31px] font-extrabold tracking-tight text-gray-900  dark:text-white text-white">
               Unleash Your Creative Potential with AI42's Cutting-Edge Dating Coach
             </h2>
-            <p className="mb-5 text-sm font-light text-gray-500  dark:text-gray-400">
+            <p className="mb-5 text-sm font-light text-gray-500  dark:text-gray-400 text-gray">
               Ignite your projects with AI42's AI-Powered Image Generator.
               Whether you're an individual, designer, website creator, or stock
               image buyer, our state-of-the-art technology empowers you to

@@ -144,9 +144,9 @@
     @apply flex-grow w-screen flex-wrap overflow-hidden py-[9px];
   }
 
-  .message__markdown {
-    @apply text-xl text-slate-700 dark:text-slate-200;
-  }
+  /* .message__markdown {
+    @apply text-xl text-["red"] dark:text-["red"];
+  } */
 
   .message__createdAt {
     @apply text-sm font-thin italic text-slate-600 dark:text-slate-300 mt-[5px];
